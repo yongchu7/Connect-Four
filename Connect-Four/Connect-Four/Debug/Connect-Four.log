@@ -1,0 +1,4 @@
+﻿  Source.cpp
+c:\users\51565\onedrive\documents\visual studio 2017\projects\connect-four\connect-four\source.cpp(124): warning C4101: 'winner': unreferenced local variable
+  Connect-Four.vcxproj -> C:\Users\51565\onedrive\documents\visual studio 2017\Projects\Connect-Four\Debug\Connect-Four.exe
+  Connect-Four.vcxproj -> C:\Users\51565\onedrive\documents\visual studio 2017\Projects\Connect-Four\Debug\Connect-Four.pdb (Partial PDB)
