@@ -29,7 +29,7 @@ void select() { // select mode
 
 void special()//create new array bu insert value 
 {
-	cout << "ROWS£º";
+	cout << "ROWS:";
 	cin >> rows;
 	if (rows < 4 || rows > 20) {
 		cout << "I'm sorry, I don't understand. Please try again:";
