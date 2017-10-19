@@ -29,7 +29,7 @@ void select() { // select mode
 
 void special()//create new array bu insert value 
 {
-	cout << "ROWS:";
+	cout << "ROWS£º";
 	cin >> rows;
 	if (rows < 4 || rows > 20) {
 		cout << "I'm sorry, I don't understand. Please try again:";
@@ -66,7 +66,15 @@ void Initialize()//initialize board
 	}
 }
 
-
+void restart() {
+	for (int x = 0; x < rows; x++)
+	{
+		for (int y = 0; y < columns; y++)
+		{
+			Board[x][y] = 0;
+		}
+	}
+}
 
 void playerX( int playerX) {//position for playerX
 	int input;
@@ -211,6 +219,11 @@ bool checkWinner(int x, int y, int player) {//check multple direction
 	if (total == wins) return true;
 	else return false;
 }
+/*void check() {
+	if (!winner && Board[rows-1][columns-1] == 1 || Board[rows-1][columns-1] == 2) {
+		cout << "game over!" << endl;
+	}
+}*/
 
 void game() {//set up game
 
@@ -230,6 +243,7 @@ void game() {//set up game
 			cout << "Game over! Do you want to play again£¿ (y/n)";
 			cin >> choice;
 			if (choice == 'y') { // reset the game 
+				restart();
 				select();
 				special();
 				Initialize();
@@ -250,6 +264,7 @@ void game() {//set up game
 			cout << "Game over! Do you want to play again£¿ (y/n)";
 			cin >> choice;
 			if (choice == 'y') {
+				restart();
 				select();
 				special();
 				Initialize();
@@ -261,6 +276,8 @@ void game() {//set up game
 			else break;
 		}
 	}
+	if (!winner) cout << "game over!"<< endl;
+	system("pause");
 }
 
 
@@ -271,7 +288,7 @@ int main()
 	int counter = 1;
 	select();
 	special();
-	
 	game();
+	//check();
 }
 		
