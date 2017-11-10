@@ -29,7 +29,7 @@ void select() { // select mode
 
 void special()//create new array bu insert value 
 {
-	cout << "ROWS£º";
+	cout << "ROWSï¼š";
 	cin >> rows;
 	if (rows < 4 || rows > 20) {
 		cout << "I'm sorry, I don't understand. Please try again:";
@@ -124,23 +124,31 @@ void playerO(int playerO) {//position for playerO
 	Y = (rows - 1) - num;
 }
 
-bool checkWinner(int x, int y, int player) {//check multple direction 
 
+int times = 0;
+void checkVertical(int x, int y, int player) {
 	int total = 1;
 	int counter = 1;
 	int times = 0;
 	bool winner;
-
 	while (y + counter >= 0 && y + counter < rows)
 	{
+
 		if (Board[y + counter][x] == player) //check vertical 
 		{
 			total++;
 			counter++;
+
 		}
 		else break;
 	}
+}
 
+void checkLeft(int x, int y, int player) {
+	int total = 1;
+	int counter = 1;
+	int times = 0;
+	bool winner;
 	while ((x + counter >= 0) && (x + counter < columns))//left
 	{
 		if (Board[y][x + counter] == player)
@@ -150,7 +158,13 @@ bool checkWinner(int x, int y, int player) {//check multple direction
 		}
 		else break;
 	}
+}
 
+void checkRight(int x, int y, int player) {
+	int total = 1;
+	int counter = 1;
+	int times = 0;
+	bool winner;
 
 	while ((x - counter < columns) && (x - counter >= 0))//right
 	{
@@ -162,6 +176,13 @@ bool checkWinner(int x, int y, int player) {//check multple direction
 		else break;
 	}
 
+}
+void checkCorner1(int x, int y, int player) {
+	int total = 1;
+	int counter = 1;
+	int times = 0;
+	bool winner;
+
 	while ((y - counter >= 0) && (x + counter < columns))//four corner
 	{
 		if (Board[y - counter][x + counter] == player)
@@ -172,7 +193,13 @@ bool checkWinner(int x, int y, int player) {//check multple direction
 		else break;
 	}
 
+}
 
+void checkCorner2(int x, int y, int player) {
+	int total = 1;
+	int counter = 1;
+	int times = 0;
+	bool winner;
 	while ((y + counter < rows) && (x - counter >= 0))
 	{
 		if (Board[y + counter][x - counter] == player)
@@ -182,7 +209,13 @@ bool checkWinner(int x, int y, int player) {//check multple direction
 		}
 		else break;
 	}
+}
 
+void checkCorner3(int x, int y, int player) {
+	int total = 1;
+	int counter = 1;
+	int times = 0;
+	bool winner;
 	while ((y + counter >= 0) && (x + counter < columns))
 	{
 		if (Board[y + counter][x + counter] == player)
@@ -193,6 +226,13 @@ bool checkWinner(int x, int y, int player) {//check multple direction
 		else break;
 	}
 
+}
+
+void checkCorner4(int x, int y, int player) {
+	int total = 1;
+	int counter = 1;
+	int times = 0;
+	bool winner;
 	while ((y - counter < rows) && (x - counter >= 0))
 	{
 		if (Board[y - counter][x - counter] == player)
@@ -202,6 +242,16 @@ bool checkWinner(int x, int y, int player) {//check multple direction
 		}
 		else break;
 	}
+
+}
+bool checkWinner(int x, int y, int player) {//check multple direction 
+	checkVertical(x, y, player);
+	checkRight(x,y,player);
+	checkLeft(x, y, player);
+	checkCorner1(x, y, player);
+	checkCorner2(x, y, player);
+	checkCorner3(x, y, player);
+	checkCorner4(x, y, player);
 
 	while (optionMode = true) { // step J
 
@@ -240,7 +290,7 @@ void game() {//set up game
 		if (winner)
 		{
 			cout << "Player X has won the game!" << endl;
-			cout << "Game over! Do you want to play again£¿ (y/n)";
+			cout << "Game over! Do you want to play againï¼Ÿ (y/n)";
 			cin >> choice;
 			if (choice == 'y') { // reset the game 
 				restart();
@@ -261,7 +311,7 @@ void game() {//set up game
 		if (winner)
 		{
 			cout << "Player O has won the game!" << endl;
-			cout << "Game over! Do you want to play again£¿ (y/n)";
+			cout << "Game over! Do you want to play againï¼Ÿ (y/n)";
 			cin >> choice;
 			if (choice == 'y') {
 				restart();
